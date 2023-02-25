@@ -92,3 +92,5 @@ export PATH="/home/antonjorg/.nimble/bin:$PATH"
 source /usr/share/nvm/init-nvm.sh
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+alias initdotfiles='chmod u+x .initdotfiles && ~/.initdotfiles'
