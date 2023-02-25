@@ -1,4 +1,4 @@
 keepassxc
 alacritty
-nvim
+neovim
 sioyek
