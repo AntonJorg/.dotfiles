@@ -1,4 +1,3 @@
-" 
 " NEOVIM CONFIGURATION
 "
 
@@ -12,7 +11,7 @@ Plug 'vim-airline/vim-airline'
 " Airline themes
 Plug 'vim-airline/vim-airline-themes'
 " Nord
-Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 " Better syntax-highlighting for filetypes in vim
 Plug 'sheerun/vim-polyglot'
 " Intellisense engine
@@ -36,7 +35,9 @@ Plug 'lervag/vimtex'
 call plug#end()
 
 " SETTINGS
-colorscheme nord
+" let g:gruvbox_transparent_bg=1
+colorscheme gruvbox
+hi Normal guibg=None ctermbg=None
 " Autocomplete
 set completeopt=menu,menuone,noselect
 set nofoldenable
@@ -65,6 +66,10 @@ set ttyfast                 " Speed up scrolling in Vim
 set scrolloff=5             " keep cursor 5 lines from edge when scrolling
 set signcolumn=number
 
+set nobackup
+set nowritebackup
+set updatetime=300
+
 " KEYBINDS
 " Remap <leader>
 let mapleader = " " " map leader to Space
@@ -75,7 +80,8 @@ inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>
 
 " Telescope keybinds
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
+nnoremap <leader>ff <cmd>Telescope git_files hidden=true<cr>
+nnoremap <leader>fa <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -113,4 +119,4 @@ let g:loaded_perl_provider = 0
 let g:vimtex_view_general_viewer = 'sioyek'
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 
-
+autocmd BufNewFile,BufRead *.nim, set filetype=nim

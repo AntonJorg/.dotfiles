@@ -3,42 +3,42 @@ from libqtile import bar
 from libqtile.config import Screen
 from .keys import terminal
 from .widgets import *
-from .colors import nord
+from .colors import colors
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Sep(padding=3, linewidth=0, background=nord[0]),
-                widget.Image(
-                    filename="~/.config/qtile/eos-c.png",
-                    margin=3,
-                    background=nord[0],
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn("rofi -show combi")
-                    },
-                ),
-                widget.Sep(padding=4, linewidth=0, background=nord[0]),
+                widget.Sep(padding=3, linewidth=0, background=colors.bg_dark),
+                # widget.Image(
+                #     filename="~/.config/qtile/eos-c.png",
+                #     margin=3,
+                #     background=colors.bg_dark,
+                #     mouse_callbacks={
+                #         "Button1": lambda: qtile.cmd_spawn("rofi -show combi")
+                #     },
+                #),
+                widget.Sep(padding=4, linewidth=0, background=colors.bg_dark),
                 widget.GroupBox(
+                    background=colors.bg_dark,
                     highlight_method="line",
-                    this_screen_border=nord[8],
-                    this_current_screen_border=nord[8],
-                    active=nord[6],
-                    inactive=nord[3],
-                    background=nord[0],
+                    this_screen_border=colors.main,
+                    this_current_screen_border=colors.main,
+                    active=colors.main,
+                    inactive=colors.light
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=nord[0]),
+                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
                 widget.Prompt(),
                 widget.Spacer(length=5),
-                widget.WindowName(foreground=nord[8], fmt="{}"),
+                widget.WindowName(foreground=colors.main, fmt="{}"),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=nord[0]),
-                widget.CurrentLayoutIcon(scale=0.75, background=nord[0]),
+                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
+                widget.CurrentLayoutIcon(scale=0.75, background=colors.bg_dark),
                 widget.CheckUpdates(
                     update_interval=1800,
                     distro="Arch_yay",
@@ -47,59 +47,58 @@ screens = [
                     mouse_callbacks={
                         "Button1": lambda: qtile.cmd_spawn(terminal + " -e yay -Syu")
                     },
-                    background=nord[0],
                 ),
-                widget.Systray(icon_size=20, background=nord[0]),
+                widget.Systray(icon_size=20, background=colors.bg_dark),
                 widget.TextBox(
                     text="",
                     padding=0,
                     fontsize=28,
-                    foreground=nord[0],
+                    foreground=colors.bg_dark,
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=nord[0]),
+                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
                 MyVolume(
                     fontsize=16,
                     font="Font Awesome 5 Free",
-                    foreground=nord[8],
-                    background=nord[0],
+                    foreground=colors.main,
+                    background=colors.bg_dark,
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("pavucontrol")},
                 ),
                 widget.TextBox(
                     text="",
                     padding=0,
                     fontsize=28,
-                    foreground=nord[0],
+                    foreground=colors.bg_dark,
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=nord[0]),
+                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
                 widget.Battery(
                     format="{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W",
-                    background=nord[0],
-                    foreground=nord[8],
+                    foreground=colors.main,
+                    background=colors.bg_dark,
                     charge_char="⚡",
                     discharge_char="",
                     full_char="=",
                     update_interval=10,
                     low_percentage=0.15,
-                    low_background=nord[11],
-                    low_foreground=nord[0]
+                    low_background=colors.error,
+                    low_foreground=colors.bg_dark
                 ),
                 widget.TextBox(
                     text="",
                     padding=0,
                     fontsize=28,
-                    foreground=nord[0],
+                    foreground=colors.bg_dark,
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=nord[0]),
+                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
                 widget.Clock(
                     format=" %a %d-%m-%Y %H:%M ",
-                    background=nord[0],
-                    foreground=nord[8],
+                    foreground=colors.main,
+                    background=colors.bg_dark
                 ),
                 widget.TextBox(
                     text="",
                     padding=0,
                     fontsize=28,
-                    foreground=nord[0],
+                    foreground=colors.bg_dark,
                 ),
                 widget.TextBox(
                     text="",
@@ -108,11 +107,11 @@ screens = [
                             os.path.expanduser("~/.config/rofi/powermenu.sh")
                         )
                     },
-                    foreground=nord[8],
+                    foreground=colors.main,
                 ),
             ],
             30,  # height in px
-            background=nord[1],  # background color
+            background=colors.bg_light,  # background color
         ),
     ),
 ]
