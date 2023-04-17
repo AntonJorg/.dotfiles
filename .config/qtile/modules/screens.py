@@ -5,6 +5,28 @@ from .keys import terminal
 from .widgets import *
 from .colors import nord
 
+battery_widgets = [
+    widget.TextBox(text="", padding=0, fontsize=28, foreground=nord[0]),
+    widget.Battery(
+        format="{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W",
+        background=nord[0],
+        foreground=nord[8],
+        charge_char="⚡",
+        discharge_char="",
+        full_char="=",
+        update_interval=10,
+        low_percentage=0.15,
+        low_background=nord[11],
+        low_foreground=nord[0]
+    ),
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=28,
+        foreground=nord[0],
+    )
+] if os.path.isfile("/sys/class/power_supply/BAT1/status") else []
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -70,25 +92,7 @@ screens = [
                     fontsize=28,
                     foreground=nord[0],
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=nord[0]),
-                widget.Battery(
-                    format="{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W",
-                    background=nord[0],
-                    foreground=nord[8],
-                    charge_char="⚡",
-                    discharge_char="",
-                    full_char="=",
-                    update_interval=10,
-                    low_percentage=0.15,
-                    low_background=nord[11],
-                    low_foreground=nord[0]
-                ),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=28,
-                    foreground=nord[0],
-                ),
+                *battery_widgets,
                 widget.TextBox(text="", padding=0, fontsize=28, foreground=nord[0]),
                 widget.Clock(
                     format=" %a %d-%m-%Y %H:%M ",

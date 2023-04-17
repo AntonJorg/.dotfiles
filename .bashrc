@@ -85,6 +85,9 @@ _open_files_for_editing() {
 # alias pacdiff=eos-pacdiff
 ################################################################################
 
+# set us keyboard
+setxkbmap us
+
 # Modify path
 export PATH="/home/antonjorg/.local/bin:$PATH"
 export PATH="/home/antonjorg/.nimble/bin:$PATH"
