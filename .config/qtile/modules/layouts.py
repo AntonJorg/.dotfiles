@@ -1,10 +1,10 @@
 from libqtile import layout
 from libqtile.config import Match
-from .colors import nord
+from .colors import colors
 
 layouts = [
-    layout.MonadTall(margin=8, border_focus=nord[8],
-                     border_normal=nord[10]),
+    layout.MonadTall(margin=8, border_focus=colors.main,
+                     border_normal=colors.bg_light),
     #layout.Columns(border_focus_stack='#d75f5f'),
     layout.Max(),
     # Try more layouts by unleashing below layouts.

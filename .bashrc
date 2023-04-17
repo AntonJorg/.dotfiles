@@ -97,3 +97,12 @@ source /usr/share/nvm/init-nvm.sh
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias initdotfiles='chmod u+x .initdotfiles && ~/.initdotfiles'
+
+BATTERY_FILE="/sys/class/power_supply/BAT1/status"
+
+if test -f "$BATTERY_FILE"; then
+    alias alacritty='alacritty -o font.size=9'
+else
+    alias alacritty='alacritty -o font.size=12'
+fi
+

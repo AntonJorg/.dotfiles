@@ -1,7 +1,7 @@
 " Compile and run
 map <buffer> <leader>p :w<CR>:!nim c -r %<CR>
 " Autosave when leaving insert mode
-autocmd InsertLeave * :w
+autocmd InsertLeave * :w 
 " Smaller tabs
 setlocal shiftwidth=2            " width for autoindents
 setlocal tabstop=2               " number of columns occupied by a tab 

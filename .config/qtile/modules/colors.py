@@ -1,18 +1,22 @@
-nord = [
-    "#2e3440",
-    "#3b4252",
-    "#434c5e",
-    "#4c566a",
-    "#d8dee9",
-    "#e5e9f0",
-    "#eceff4",
-    "#8fbcbb",
-    "#88c0d0",
-    "#81a1c1",
-    "#5e81ac",
-    "#bf616a",
-    "#d08770",
-    "#ebcb8b",
-    "#a3be8c",
-    "#b48ead"
-]
+from dataclasses import dataclass
+
+
+@dataclass
+class ColorScheme:
+    bg_light: str
+    bg_dark: str
+    main: str
+    error: str
+    light: str
+
+
+gruvbox = ColorScheme(
+    bg_light="#282828",
+    bg_dark="#1d2021",
+    main="#98971a",
+    error="#cc241d",
+    light="#504945"
+)
+
+# set colors to desired color scheme
+colors = gruvbox
