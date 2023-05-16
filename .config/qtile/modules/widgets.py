@@ -1,5 +1,6 @@
+import subprocess
 from libqtile import widget
-from libqtile import qtile
+from libqtile.log_utils import logger
 
 colors = [
     ["#282c34", "#282c34"],  # panel background
@@ -26,7 +27,7 @@ extension_defaults = widget_defaults.copy()
 
 class MyVolume(widget.Volume):
     def _configure(self, qtile, bar):
-        widget.Volume._configure(self, qtile, bar)
+        super()._configure(qtile, bar)
         self.device = "pulse"
         self.volume = self.get_volume()
         if self.volume <= 0:
@@ -47,10 +48,19 @@ class MyVolume(widget.Volume):
                 f.write(str(self.volume) + "\n")
 
 
-volume = MyVolume(
-    fontsize=18,
-    font="Font Awesome 5 Free",
-    foreground=colors[4],
-    background="#2f343f",
-    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("pavucontrol")},
-)
+class KeyboardMap(widget.TextBox):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.text = "DK"
+        self.add_callbacks(
+            {"Button1": self.switch}
+        )
+        self.switch()
+
+    def _configure(self, qtile, bar):
+        super()._configure(qtile, bar)
+
+    def switch(self):
+        self.text = "US" if self.text == "DK" else "DK"
+        subprocess.run(["setxkbmap", self.text.lower()])
+        self.draw()

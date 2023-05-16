@@ -1,5 +1,5 @@
 import os
-from libqtile import bar
+from libqtile import qtile, bar
 from libqtile.config import Screen
 from .keys import terminal
 from .widgets import *
@@ -26,6 +26,10 @@ battery_widgets = [
         foreground=colors.bg_dark,
     )
 ] if os.path.isfile("/sys/class/power_supply/BAT1/status") else []
+
+
+kb_map = KeyboardMap()
+
 
 screens = [
     Screen(
@@ -58,6 +62,17 @@ screens = [
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
+                ),
+                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
+                KeyboardMap(
+                    foreground=colors.main,
+                    background=colors.bg_dark
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=28,
+                    foreground=colors.bg_dark,
                 ),
                 widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
                 widget.CheckUpdates(
