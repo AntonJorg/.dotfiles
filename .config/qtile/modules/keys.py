@@ -5,7 +5,7 @@ from libqtile.lazy import lazy
 from libqtile.config import Key
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
 AUDIO_INTERVAL = 5
 
