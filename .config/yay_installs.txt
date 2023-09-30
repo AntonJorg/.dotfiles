@@ -1,5 +1,7 @@
 keepassxc
-alacritty
+kitty
 neovim
 sioyek
 nvm
+rustup
+poetry
