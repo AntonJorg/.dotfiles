@@ -5,6 +5,12 @@ from .keys import terminal
 from .widgets import *
 from .colors import colors
 
+def running_on_laptop():
+    return any(
+        file.startswith("BAT") for file in
+        os.listdir("/sys/class/power_supply")
+    )
+
 battery_widgets = [
     widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
     widget.Battery(
@@ -25,7 +31,7 @@ battery_widgets = [
         fontsize=28,
         foreground=colors.bg_dark,
     )
-] if os.path.isfile("/sys/class/power_supply/BAT1/status") else []
+] if running_on_laptop() else []
 
 
 kb_map = KeyboardMap()

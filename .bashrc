@@ -88,12 +88,17 @@ _open_files_for_editing() {
 # Modify path
 export PATH="/home/antonjorg/.local/bin:$PATH"
 export PATH="/home/antonjorg/.nimble/bin:$PATH"
+export PATH="/home/antonjorg/.cargo/bin:$PATH"
+
 
 source /usr/share/nvm/init-nvm.sh
 
+# config management
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
 alias initdotfiles='chmod u+x .initdotfiles && ~/.initdotfiles'
+
+alias qtile-log='cat ~/.local/share/qtile/qtile.log'
+
 
 BATTERY_FILE="/sys/class/power_supply/BAT1/status"
 
