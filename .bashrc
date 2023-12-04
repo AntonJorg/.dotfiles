@@ -8,7 +8,7 @@
 [[ -f ~/.welcome_screen ]] && . ~/.welcome_screen
 
 _set_liveuser_PS1() {
-    PS1='[\u@\h \W]\$ '
+    PS1='[\e[32m\u\e[0m at \e[32m\h\e[0m in \W]\$ '
     if [ "$(whoami)" = "liveuser" ] ; then
         local iso_version="$(grep ^VERSION= /usr/lib/endeavouros-release 2>/dev/null | cut -d '=' -f 2)"
         if [ -n "$iso_version" ] ; then
@@ -102,4 +102,22 @@ if test -f "$BATTERY_FILE"; then
 else
     alias alacritty='alacritty -o font.size=12'
 fi
+
+# kitty aliases
+alias icat='kitty +kitten icat'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/antonjorg/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/antonjorg/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/antonjorg/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/antonjorg/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
