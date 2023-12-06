@@ -1,7 +1,8 @@
-keepassxc
 kitty
 neovim
 sioyek
-nvm
+keepassxc
+syncthing
 rustup
 poetry
+nvm

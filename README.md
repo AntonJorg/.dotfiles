@@ -10,6 +10,10 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 dotfiles checkout
 ```
+After this, run:
+```bash
+./.initdotfiles
+```
 
 ## KeePassXC
 
@@ -17,6 +21,13 @@ dotfiles checkout
 
 Basic setup comes from EndeavourOS Qtile edition.
 
-- nvim
-- sioyek
+Additional programs installed via `.initdotfiles` are:
+- *kitty:* Terminal emulator
+- *neovim:* Text editor / dev environment
+- *sioyek:* PDF viewer
+- *keepassxc:* Password manager
+- *syncthing:* File syncronization
+- *rustup:* Rust manager
+- *poetry:* Python manager
+- *nvm:* NodeJS manager
 
