@@ -1,6 +1,8 @@
-from libqtile.config import Key, Group
+from libqtile.config import DropDown, Key, Group, ScratchPad
 from libqtile.command import lazy
 from .keys import keys, mod
+
+DROPDOWN_POSITION = {"x": 0.05, "y": 0.05, "width": 0.9, "height": 0.9}
 
 groups = [
     Group("WWW"),
@@ -9,7 +11,42 @@ groups = [
     Group("DOCS"),
     Group("ETC"),
     Group("KPXC", spawn="keepassxc"),
+    ScratchPad(
+        "0",
+        [
+            DropDown(
+                "chatgpt",
+                "surf -z 1.4 https://chat.openai.com",
+                opacity=0.8,
+                **DROPDOWN_POSITION,
+            ),
+            DropDown(
+                "thunderbird",
+                "thunderbird",
+                on_focus_lost_hide=False,
+                **DROPDOWN_POSITION,
+            ),
+        ],
+    ),
 ]
+
+keys.append(
+    Key(
+        [mod],
+        "n",
+        lazy.group["0"].dropdown_toggle("chatgpt"),
+        desc="Toggle ChatGPT overlay.",
+    )
+)
+
+keys.append(
+    Key(
+        [mod],
+        "m",
+        lazy.group["0"].dropdown_toggle("thunderbird"),
+        desc="Toggle Thunderbird overlay.",
+    )
+)
 
 for i, group in enumerate(groups):
     keys.extend(
