@@ -95,7 +95,8 @@ source /usr/share/nvm/init-nvm.sh
 
 # config management
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias initdotfiles='chmod u+x .initdotfiles && ~/.initdotfiles'
+alias dotfiles-init='chmod u+x .initdotfiles && ~/.initdotfiles'
+alias dotfiles-add-changes='dotfiles add -u'
 
 alias qtile-log='cat ~/.local/share/qtile/qtile.log'
 
