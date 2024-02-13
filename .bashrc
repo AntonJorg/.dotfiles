@@ -97,7 +97,11 @@ source /usr/share/nvm/init-nvm.sh
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias initdotfiles='chmod u+x .initdotfiles && ~/.initdotfiles'
 
+# troubleshooting
 alias qtile-log='cat ~/.local/share/qtile/qtile.log'
+
+# terminal workflow
+alias new='kitty . &'
 
 
 BATTERY_FILE="/sys/class/power_supply/BAT1/status"
@@ -113,16 +117,16 @@ alias icat='kitty +kitten icat'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/antonjorg/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/antonjorg/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/antonjorg/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/antonjorg/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#__conda_setup="$('/home/antonjorg/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/antonjorg/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/antonjorg/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/antonjorg/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
 # <<< conda initialize <<<
 
