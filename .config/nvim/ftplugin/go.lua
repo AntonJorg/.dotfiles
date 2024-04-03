@@ -1,24 +1,7 @@
--- Go specific configuration
+-- Golang specific configuration
 
--- Run
-vim.keymap.set(
-  "n",
-  "<leader>p",
-  ":!go run *.go<cr>",
-  {
-    desc = "Run main package"
-  }
-)
+-- Run all Go files
+vim.keymap.set("n", "<leader>p", ":!go run *.go<cr>", { desc = "Run Go files" })
 
-vim.keymap.set(
-  "n",
-  "<leader>o",
-  ":!templ generate<cr>",
-  {
-    desc = "Generate templ code"
-  }
-)
-
--- Options
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4

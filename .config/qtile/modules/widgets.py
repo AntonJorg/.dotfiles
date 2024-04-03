@@ -52,9 +52,7 @@ class KeyboardMap(widget.TextBox):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.text = "DK"
-        self.add_callbacks(
-            {"Button1": self.switch}
-        )
+        self.add_callbacks({"Button1": self.switch})
         self.switch()
 
     def _configure(self, qtile, bar):

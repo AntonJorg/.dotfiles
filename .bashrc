@@ -86,11 +86,10 @@ _open_files_for_editing() {
 ################################################################################
 
 # Modify path
-export PATH="/home/antonjorg/.local/bin:$PATH"
-export PATH="/home/antonjorg/.nimble/bin:$PATH"
-export PATH="/home/antonjorg/.cargo/bin:$PATH"
-export PATH="/home/antonjorg/go/bin:$PATH"
-
+export PATH="$HOME/antonjorg/.local/bin:$PATH"
+export PATH="$HOME/antonjorg/.nimble/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 source /usr/share/nvm/init-nvm.sh
 
@@ -102,10 +101,6 @@ alias dotfiles-add-changes='dotfiles add -u'
 # troubleshooting
 alias qtile-log='cat ~/.local/share/qtile/qtile.log'
 
-# terminal workflow
-alias new='kitty . &'
-
-
 BATTERY_FILE="/sys/class/power_supply/BAT1/status"
 
 if test -f "$BATTERY_FILE"; then
@@ -113,9 +108,6 @@ if test -f "$BATTERY_FILE"; then
 else
     alias alacritty='alacritty -o font.size=12'
 fi
-
-# kitty aliases
-alias icat='kitty +kitten icat'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

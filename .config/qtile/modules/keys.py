@@ -7,12 +7,6 @@ terminal = "alacritty"
 
 AUDIO_INTERVAL = 5
 
-
-def get_brightness():
-    return random.randint(0, 100)
-    # return math.round(float(subprocess.check_output(["xbacklight", "-get"]).strip()) / 10) * 10
-
-
 keys = [
     # Group switching
     Key([mod], "Right", lazy.screen.next_group(), desc="Switch to next group"),
@@ -88,7 +82,7 @@ keys = [
         [],
         "XF86MonBrightnessUp",
         lazy.spawn(
-            f"""xbacklight -inc 10 && notify-send "Brightness increased to {get_brightness():d}%" -t 1000""",
+            """xbacklight -inc 10 && notify-send "Brightness increased" -t 1000""",
             shell=True,
         ),
     ),
@@ -96,8 +90,10 @@ keys = [
         [],
         "XF86MonBrightnessDown",
         lazy.spawn(
-            f"""xbacklight -dec 10 && notify-send "Brightness decreased to {get_brightness():d}%" -t 1000""",
+            """xbacklight -dec 10 && notify-send "Brightness decreased" -t 1000""",
             shell=True,
         ),
     ),
+    Key([], "Print", lazy.spawn("flameshot gui")),
+    Key([mod], "l", lazy.spawn("xsecurelock"), desc="Lock screen"),
 ]

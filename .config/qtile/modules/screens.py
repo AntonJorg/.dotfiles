@@ -5,33 +5,36 @@ from .keys import terminal
 from .widgets import *
 from .colors import colors
 
-def running_on_laptop():
-    return any(
-        file.startswith("BAT") for file in
-        os.listdir("/sys/class/power_supply")
-    )
 
-battery_widgets = [
-    widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
-    widget.Battery(
-        format="{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W",
-        background=colors.bg_dark,
-        foreground=colors.main,
-        charge_char="⚡",
-        discharge_char="",
-        full_char="=",
-        update_interval=10,
-        low_percentage=0.15,
-        low_background=colors.error,
-        low_foreground=colors.bg_dark
-    ),
-    widget.TextBox(
-        text="",
-        padding=0,
-        fontsize=28,
-        foreground=colors.bg_dark,
-    )
-] if running_on_laptop() else []
+def running_on_laptop():
+    return any(file.startswith("BAT") for file in os.listdir("/sys/class/power_supply"))
+
+
+battery_widgets = (
+    [
+        widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
+        widget.Battery(
+            format="{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W",
+            background=colors.bg_dark,
+            foreground=colors.main,
+            charge_char="⚡",
+            discharge_char="",
+            full_char="=",
+            update_interval=10,
+            low_percentage=0.15,
+            low_background=colors.error,
+            low_foreground=colors.bg_dark,
+        ),
+        widget.TextBox(
+            text="",
+            padding=0,
+            fontsize=28,
+            foreground=colors.bg_dark,
+        ),
+    ]
+    if running_on_laptop()
+    else []
+)
 
 
 kb_map = KeyboardMap()
@@ -49,7 +52,7 @@ screens = [
                 #     mouse_callbacks={
                 #         "Button1": lambda: qtile.cmd_spawn("rofi -show combi")
                 #     },
-                #),
+                # ),
                 widget.Sep(padding=4, linewidth=0, background=colors.bg_dark),
                 widget.GroupBox(
                     background=colors.bg_dark,
@@ -57,9 +60,11 @@ screens = [
                     this_screen_border=colors.main,
                     this_current_screen_border=colors.main,
                     active=colors.main,
-                    inactive=colors.light
+                    inactive=colors.light,
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
+                widget.TextBox(
+                    text="", padding=0, fontsize=28, foreground=colors.bg_dark
+                ),
                 widget.Prompt(),
                 widget.Spacer(length=5),
                 widget.WindowName(foreground=colors.main, fmt="{}"),
@@ -69,18 +74,19 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
-                KeyboardMap(
-                    foreground=colors.main,
-                    background=colors.bg_dark
+                widget.TextBox(
+                    text="", padding=0, fontsize=28, foreground=colors.bg_dark
                 ),
+                KeyboardMap(foreground=colors.main, background=colors.bg_dark),
                 widget.TextBox(
                     text="",
                     padding=0,
                     fontsize=28,
                     foreground=colors.bg_dark,
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
+                widget.TextBox(
+                    text="", padding=0, fontsize=28, foreground=colors.bg_dark
+                ),
                 widget.CheckUpdates(
                     update_interval=1800,
                     distro="Arch_yay",
@@ -89,7 +95,7 @@ screens = [
                     mouse_callbacks={
                         "Button1": lambda: qtile.cmd_spawn(terminal + " -e yay -Syu")
                     },
-                    background=colors.bg_dark
+                    background=colors.bg_dark,
                 ),
                 widget.CurrentLayoutIcon(scale=0.75, background=colors.bg_dark),
                 widget.Systray(icon_size=20, background=colors.bg_dark),
@@ -100,7 +106,9 @@ screens = [
                     foreground=colors.bg_dark,
                 ),
                 *battery_widgets,
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
+                widget.TextBox(
+                    text="", padding=0, fontsize=28, foreground=colors.bg_dark
+                ),
                 MyVolume(
                     fontsize=16,
                     font="Font Awesome 5 Free",
@@ -114,11 +122,13 @@ screens = [
                     fontsize=28,
                     foreground=colors.bg_dark,
                 ),
-                widget.TextBox(text="", padding=0, fontsize=28, foreground=colors.bg_dark),
+                widget.TextBox(
+                    text="", padding=0, fontsize=28, foreground=colors.bg_dark
+                ),
                 widget.Clock(
                     format=" %a %d-%m-%Y %H:%M ",
                     foreground=colors.main,
-                    background=colors.bg_dark
+                    background=colors.bg_dark,
                 ),
                 widget.TextBox(
                     text="",
