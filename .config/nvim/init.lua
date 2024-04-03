@@ -206,6 +206,9 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 
+-- Show line numbers above/below current as relative
+vim.wo.relativenumber = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -345,7 +348,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'templ' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'java', 'templ' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
@@ -478,20 +481,25 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
-  gopls = {},
-
+  -- FASM
+  asm_lsp = {},
+  -- C
+  clangd = {},
+  -- Java
+  jdtls = {},
+  -- Rust
   rust_analyzer = {},
-
-  -- tsserver = {},
-
+  -- Go
+  gopls = {},
+  -- Web
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   jsonls = {},
-
+  -- Python
   ruff_lsp = {},
   pyright = {},
+  -- TOML
   taplo = {},
-
+  -- Lua
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -586,6 +594,15 @@ cmp.setup {
   },
 }
 
+require('neo-tree').setup {
+  filesystem = {
+    filtered_items = {
+      visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
+      hide_dotfiles = false,
+      hide_gitignored = true,
+    },
+  },
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
