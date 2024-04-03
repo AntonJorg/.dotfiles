@@ -86,10 +86,10 @@ _open_files_for_editing() {
 ################################################################################
 
 # Modify path
-export PATH="/home/antonjorg/.local/bin:$PATH"
-export PATH="/home/antonjorg/.nimble/bin:$PATH"
-export PATH="/home/antonjorg/.cargo/bin:$PATH"
-
+export PATH="$HOME/antonjorg/.local/bin:$PATH"
+export PATH="$HOME/antonjorg/.nimble/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 source /usr/share/nvm/init-nvm.sh
 
