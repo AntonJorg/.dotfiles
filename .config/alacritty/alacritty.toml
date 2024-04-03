@@ -1,0 +1,10 @@
+# see defaults and more at: https://gist.github.com/iuliandita/a4c1dd0e25460af91ebeeef51e0ef7ec
+
+[shell]
+program = "/usr/bin/bash"
+args = []
+
+[window]
+decorations = "None"
+opacity = 0.75
+blur = true
