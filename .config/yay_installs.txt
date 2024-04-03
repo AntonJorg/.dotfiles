@@ -1,4 +1,4 @@
-kitty
+alacritty
 neovim
 sioyek
 keepassxc
@@ -6,3 +6,5 @@ syncthing
 rustup
 poetry
 nvm
+ripgrep
+fd

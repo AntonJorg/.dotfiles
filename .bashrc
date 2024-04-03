@@ -89,6 +89,7 @@ _open_files_for_editing() {
 export PATH="/home/antonjorg/.local/bin:$PATH"
 export PATH="/home/antonjorg/.nimble/bin:$PATH"
 export PATH="/home/antonjorg/.cargo/bin:$PATH"
+export PATH="/home/antonjorg/go/bin:$PATH"
 
 
 source /usr/share/nvm/init-nvm.sh
