@@ -243,6 +243,9 @@ vim.o.termguicolors = true
 -- Start scrolling when cursor is n lines from edge of screen
 vim.o.scrolloff = 5
 
+-- [[ Additional Filetypes ]]
+vim.filetype.add({ extension = { templ = "templ" } })
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -483,10 +486,14 @@ require('mason-lspconfig').setup()
 local servers = {
   -- FASM
   asm_lsp = {},
+  -- Go
+  gopls = { filetypes = { 'go', 'templ' } },
   -- C
   clangd = {},
   -- Java
   jdtls = {},
+  -- Zig
+  zls = {},
   -- Rust
   rust_analyzer = {},
   -- Go
