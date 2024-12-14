@@ -1,4 +1,4 @@
-import random
+import os
 from libqtile.lazy import lazy
 from libqtile.config import Key
 
@@ -96,4 +96,12 @@ keys = [
     ),
     Key([], "Print", lazy.spawn("flameshot gui")),
     Key([mod], "l", lazy.spawn("xsecurelock"), desc="Lock screen"),
+    Key(
+        [mod],
+        "p",
+        lazy.spawn(
+            "bash "
+            + os.path.expanduser("~/.config/qtile/scripts/select_screen_layout.sh"),
+        ),
+    ),
 ]
