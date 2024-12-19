@@ -1,12 +1,12 @@
 # see defaults and more at: https://gist.github.com/iuliandita/a4c1dd0e25460af91ebeeef51e0ef7ec
+[general]
 import = ["~/.config/alacritty/themes/gruvbox-dark.toml"]
 
-[shell]
-program = "/bin/bash"
-args = []
+[terminal]
+shell = "/bin/bash"
 
 [window]
-opacity = 0.75
+opacity = 0.9
 
 #[font]
 #size = 11

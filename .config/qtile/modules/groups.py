@@ -1,5 +1,5 @@
 from libqtile.config import DropDown, Key, Group, ScratchPad
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 from .keys import keys, mod
 
 DROPDOWN_POSITION = {"x": 0.05, "y": 0.05, "width": 0.9, "height": 0.9}

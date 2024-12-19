@@ -21,6 +21,15 @@ _set_liveuser_PS1() {
 _set_liveuser_PS1
 unset -f _set_liveuser_PS1
 
+# # create tmux session, attach if already running
+# # Adapted from https://unix.stackexchange.com/a/113768/347104
+# if [ -n "$PS1" ] && [ -z "$TMUX" ]; then
+#   # Adapted from https://unix.stackexchange.com/a/176885/347104
+#   # Create session 'main' or attach to 'main' if already exists.
+#   tmux new-session -A -s main
+# fi
+
+
 ShowInstallerIsoInfo() {
     local file=/usr/lib/endeavouros-release
     if [ -r $file ] ; then
@@ -124,3 +133,11 @@ fi
 #unset __conda_setup
 # <<< conda initialize <<<
 
+alias docker-up='sudo systemctl start docker.service'
+
+# Essential Robotics development environment setup
+export ISAAC_ROS_WS=~/workspaces/essential-robotics-dev/
+alias rosws='cd ${ISAAC_ROS_WS}'
+alias rosdev='${ISAAC_ROS_WS}src/essential-robotics-common/scripts/run_dev.sh -b'
+alias rosdev-build='${ISAAC_ROS_WS}src/essential-robotics-common/scripts/run_dev.sh'
+alias rosviz='echo TODO: Implement rosviz'

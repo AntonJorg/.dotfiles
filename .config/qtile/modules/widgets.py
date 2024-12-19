@@ -18,7 +18,7 @@ colors = [
 
 
 widget_defaults = dict(
-    font="Cantarell",
+    font="JetBrainsMono Nerd Font MononJetBrainsMono NFM Medium",
     fontsize=12,
     padding=3,
 )
@@ -29,12 +29,6 @@ class MyVolume(widget.Volume):
     def _configure(self, qtile, bar):
         super()._configure(qtile, bar)
         self.device = "pulse"
-        self.volume = self.get_volume()
-        if self.volume <= 0:
-            self.text = " X"
-        else:
-            self.text = f"  {self.volume:d}"
-        # drawing here crashes Wayland
 
     def _update_drawer(self, wob=False):
         if self.volume <= 0:
